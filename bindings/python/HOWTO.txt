@@ -1,0 +1,31 @@
+How to publish a new version of the Rapidly Python wrapper
+==========================================================
+
+1. Update pyproject.toml with the new version number.
+
+2. Build wheels:
+
+       python build_wheels.py
+
+3. Upload to test.pypi (sanity check):
+
+       twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+
+   Use the test.pypi API token stored in 1Password (entry: "PyPI test
+   tokens — Rapidly"). Never commit tokens to this repository.
+
+4. Upload to pypi:
+
+       twine upload dist/*
+
+   Use the production pypi API token stored in 1Password (entry: "PyPI
+   production tokens — Rapidly"). Never commit tokens to this repository.
+
+Notes
+-----
+
+- The previous Hance-era plaintext API tokens that lived in this file
+  have been revoked and removed. Generate fresh tokens at
+  https://pypi.org/manage/account/token/ when you set up the Rapidly
+  PyPI account (launch-day to-do).
+- Two-factor auth on the PyPI account is recommended.

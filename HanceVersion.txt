@@ -1,1 +1,0 @@
-set (HANCE_VERSION 26.1.0)
