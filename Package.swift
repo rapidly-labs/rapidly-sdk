@@ -15,22 +15,22 @@
 import PackageDescription
 
 let package = Package(
-    name: "RapidlyEngine",
+    name: "Rapidly SDK",
     platforms: [
         .iOS(.v14),
         .macOS(.v11),
     ],
     products: [
         .library(
-            name: "RapidlyEngine",
+            name: "RapidlySDK",
             targets: ["RapidlyEngine"]
         ),
     ],
     targets: [
         .binaryTarget(
             name: "RapidlyEngineC",
-            url: "https://github.com/rapidly-labs/rapidly-sdk/releases/download/v1.0.0/RapidlyEngine.xcframework.zip",
-            checksum: "5215da20bb2f5d23cd707691bb302d64a14bfec76f9499c92187ba88518593d6"
+            url: "https://github.com/rapidly-labs/rapidly-sdk/releases/download/v1.0.1/RapidlyEngine.xcframework.zip",
+            checksum: "658f52f8c140cf52e2a8471dc1b407b37216454560e9ea0ec6e4da48153d4c76"
         ),
         .target(
             name: "RapidlyEngine",
