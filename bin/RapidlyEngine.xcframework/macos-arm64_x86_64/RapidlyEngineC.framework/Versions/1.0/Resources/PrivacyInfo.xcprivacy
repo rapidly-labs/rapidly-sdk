@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!--
+        Rapidly SDK privacy manifest.
+
+        Apple requires SDKs that use "required-reason" APIs to ship a
+        PrivacyInfo.xcprivacy declaring those uses, otherwise customer
+        App Store submissions are rejected with ITMS-91056.
+
+        The engine binary uses stat() / fstat() to check file existence
+        and read model file sizes before loading. These fall under the
+        FileTimestamp category. Reason C617.1 covers "Access the
+        timestamps, size, or other metadata of files inside the app
+        container, app group container, or the app's CloudKit
+        container" -- which is what the SDK does on a customer-
+        supplied model file path.
+
+        No tracking, no data collection. The SDK is fully on-device.
+
+        AUDIT (post-PR-92 cleanup, CL-5): `nm -u` was run against all
+        three shipped slices (macOS universal, iOS arm64, iOS Simulator
+        universal). The only required-reason API symbols imported are
+        _stat / _fstat (FileTimestamp, declared below). No System Boot
+        Time (mach_absolute_time / mach_continuous_time / clock_gettime),
+        Disk Space (statfs / statvfs / getfsstat), or User Defaults
+        (NSUserDefaults / CFPreferences) symbols are present. The engine
+        does call wall-clock time() / std::chrono::system_clock::now(),
+        but those are NOT on Apple's required-reason list (that list's
+        time category covers only uptime APIs, not calendar time). This
+        manifest is therefore complete as of this audit.
+
+        MAINTENANCE CONTRACT: when adding engine source that calls a
+        required-reason API -- mach_absolute_time / mach_continuous_time
+        (System Boot Time, 35F9.1), statfs / statvfs / getfsstat (Disk
+        Space, E174.1 / 85F4.1), NSUserDefaults / CFPreferences (User
+        Defaults, CA92.1 / 1C8F.1), etc. -- add the matching
+        NSPrivacyAccessedAPIType entry below with the appropriate
+        NSPrivacyAccessedAPIReasons code BEFORE shipping. A miss is not
+        caught at our build time; it surfaces as an opaque ITMS-91056
+        rejection on the customer's App Store submission. Re-run the
+        `nm -u` audit above whenever the engine's syscall surface
+        changes. Apple's full required-reason API list:
+        https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api
+    -->
+    <key>NSPrivacyTracking</key>
+    <false/>
+    <key>NSPrivacyTrackingDomains</key>
+    <array/>
+    <key>NSPrivacyCollectedDataTypes</key>
+    <array/>
+    <key>NSPrivacyAccessedAPITypes</key>
+    <array>
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
+            <key>NSPrivacyAccessedAPIReasons</key>
+            <array>
+                <string>C617.1</string>
+            </array>
+        </dict>
+    </array>
+</dict>
+</plist>

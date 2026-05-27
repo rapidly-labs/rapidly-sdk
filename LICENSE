@@ -1,0 +1,104 @@
+RAPIDLY SDK LICENCE AGREEMENT
+
+Copyright (c) 2026 Rapidly Labs AS. All rights reserved.
+
+This Software ("the Rapidly SDK") is proprietary commercial software
+of Rapidly Labs AS, a company incorporated in Norway. Use of the SDK
+requires a valid Rapidly licence issued by Rapidly Labs AS. Without a
+valid licence, the SDK operates in a watermarked demo mode that audibly
+degrades its output.
+
+By downloading, installing, or using the SDK you agree to the terms below.
+
+The full Terms of Service governing this Agreement are published at
+https://www.rapidly.io/docs/legal/terms and form part of this Agreement.
+
+1. GRANT OF LICENCE
+   Subject to a valid Rapidly licence and the terms of any separate
+   commercial agreement with Rapidly Labs AS, you are granted a
+   non-exclusive, non-transferable, non-sublicensable licence to:
+     (a) embed the SDK binaries within your own end-user applications,
+         products, or services;
+     (b) load the audio model files distributed with the SDK or supplied
+         to you by Rapidly Labs AS, but only the model identifiers and
+         latency variants encoded in your Rapidly licence ("model
+         entitlements").
+
+2. LICENCE TYPES
+
+   The SDK enforces licence terms locally. Each Rapidly licence carries
+   a cryptographically signed payload encoding the issuing account, a
+   unique key identifier, expiration, and model entitlements (per-
+   model_id, per-latency_ms).
+
+   2.1 Licence Keys
+       A Rapidly licence key is a perpetual offline credential of the
+       form `lk_<base64url-payload>.<base64url-signature>`. The SDK
+       verifies the key's Ed25519 signature against an embedded public
+       key, checks expiration, and enforces model entitlements at model-
+       load time without requiring any network access.
+
+   (Future Rapidly licence types will be added as additional subsections
+   under §2.)
+
+3. RESTRICTIONS
+   You may not:
+     (a) reverse engineer, decompile, disassemble, or otherwise attempt
+         to derive the source code, signing keys, or model weights from
+         the SDK or its model files, except to the extent that applicable
+         mandatory law prohibits this restriction;
+     (b) redistribute the SDK or any of its components as a standalone
+         product, library, or service;
+     (c) load model files, model identifiers, or latency variants not
+         covered by your Rapidly licence, or attempt to bypass, disable,
+         or circumvent the licence verification or watermarking
+         mechanisms;
+     (d) remove, alter, or obscure any copyright, trademark, licence
+         notice, or other proprietary marking on the SDK, its model
+         files, or any accompanying documentation;
+     (e) use the SDK in any manner that violates applicable law or any
+         additional terms of your separate commercial agreement.
+
+4. UPDATES AND MODEL VERSIONS
+   Rapidly Labs AS may release updates to the SDK binaries and to the
+   model files. Patch revisions to a model file (same model_id, increased
+   model_version) are covered by your existing Rapidly licence. Minor
+   and major model revisions, which carry a new model_id, may require
+   an upgraded or new Rapidly licence.
+
+5. OWNERSHIP
+   The SDK, its model files, and all related intellectual property are
+   and remain the exclusive property of Rapidly Labs AS. Nothing in this
+   Agreement transfers ownership of any intellectual property to you.
+
+6. NO WARRANTY
+   THE SDK IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING WITHOUT LIMITATION ANY WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.
+   RAPIDLY LABS AS DOES NOT WARRANT THAT THE SDK WILL BE UNINTERRUPTED
+   OR ERROR-FREE.
+
+7. LIMITATION OF LIABILITY
+   IN NO EVENT SHALL RAPIDLY LABS AS BE LIABLE FOR ANY INDIRECT,
+   INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES, OR FOR ANY
+   LOSS OF PROFITS, REVENUE, DATA, OR USE, ARISING FROM OR RELATED TO
+   THIS AGREEMENT OR THE SDK, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+   DAMAGES. THE TOTAL AGGREGATE LIABILITY OF RAPIDLY LABS AS UNDER THIS
+   AGREEMENT SHALL NOT EXCEED THE FEES PAID BY YOU FOR THE RAPIDLY
+   LICENCE COVERING THE PERIOD IN WHICH THE CLAIM AROSE.
+
+8. TERMINATION
+   This Agreement terminates automatically upon expiration of your
+   Rapidly licence, upon any material breach of this Agreement, or as
+   specified in your separate commercial agreement with Rapidly Labs AS.
+   Upon termination, you must cease all use of the SDK and destroy all
+   copies in your possession.
+
+9. GOVERNING LAW
+   This Agreement is governed by the laws of Norway, without regard to
+   conflict-of-law principles. Disputes shall be resolved in the courts
+   of Oslo, Norway.
+
+10. CONTACT
+    Commercial licensing enquiries: sales@rapidly.io
+    Technical support and key issuance: support@rapidly.io
