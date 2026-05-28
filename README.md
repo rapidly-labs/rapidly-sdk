@@ -19,7 +19,7 @@ A lean, cross-platform C++ library built for low latency and small footprint. Cu
 |---|---|
 | C / C++ | Embed a binary from `bin/<platform>/` and include `include/RapidlyEngine.h`. See `examples/process-file/` for a CLI walkthrough. |
 | Swift / iOS / macOS | In Xcode: **File → Add Package Dependencies** → paste `https://github.com/rapidly-labs/rapidly-sdk`, then `import RapidlyEngine` for the Swift-native `RapidlyEngine` class. Or drag `bin/RapidlyEngine.xcframework` into your Xcode project's Frameworks section and `import RapidlyEngineC` for the C API. |
-| Kotlin / Android | In Gradle: `implementation("io.rapidly:engine:1.0")` from Maven Central, then `import io.rapidly.engine.RapidlyEngine` for the Kotlin-native class. Or download `rapidly-engine-1.0.aar` from the GitHub release into your app's `libs/` and add `implementation(files("libs/rapidly-engine-1.0.aar"))`. Bundles `arm64-v8a`. `minSdk` 26. |
+| Kotlin / Android | In Gradle: `implementation("io.rapidly:rapidly-sdk:1.0")` from Maven Central, then `import io.rapidly.engine.RapidlyEngine` for the Kotlin-native class. Or download `rapidly-sdk-1.0.aar` from the GitHub release into your app's `libs/` and add `implementation(files("libs/rapidly-sdk-1.0.aar"))`. Bundles `arm64-v8a`. `minSdk` 26. |
 | Python | `pip install rapidly` (PyPI). See `bindings/python/README.md`. |
 
 Documentation: <https://rapidly.io/docs>
@@ -77,7 +77,7 @@ For AI-assisted integration, see [`AGENTS.md`](AGENTS.md).
 | `include/` | Single public header `RapidlyEngine.h` |
 | `models/` | Pre-trained Rapidly model files (`.rapidly`) |
 | `bindings/swift/` | Swift wrapper source (canonical install: SwiftPM via `Package.swift` at repo root) |
-| `bindings/kotlin/` | Kotlin wrapper source (canonical install: `implementation("io.rapidly:engine:1.0")` from Maven Central) |
+| `bindings/kotlin/` | Kotlin wrapper source (canonical install: `implementation("io.rapidly:rapidly-sdk:1.0")` from Maven Central) |
 | `bindings/python/` | Python wrapper (`pip install rapidly`) |
 | `examples/` | Working integration demos: `process-file`, `raspberry-pi` |
 | `Package.swift` | Swift Package Manager manifest (Apple platforms) |
