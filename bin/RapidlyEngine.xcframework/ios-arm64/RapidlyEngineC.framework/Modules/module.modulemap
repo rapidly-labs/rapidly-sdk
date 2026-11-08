@@ -1,0 +1,9 @@
+framework module RapidlyEngineC {
+    umbrella header "RapidlyEngine.h"
+    export *
+
+    explicit module Private {
+        private header "EngineAdapterObjC.h"
+        export *
+    }
+}

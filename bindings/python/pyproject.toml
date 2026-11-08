@@ -1,0 +1,27 @@
+# pyproject.toml
+
+[build-system]
+requires      = ["setuptools>=41.2.0", "wheel", "six"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rapidly"
+version = "1.2.0"
+description = "The Python API to the Rapidly SDK: realtime audio separation powered by Rapidly Labs AS."
+readme = "README.md"
+authors = [{ name = "Rapidly Labs AS", email = "support@rapidly.io" }]
+license = "LicenseRef-Proprietary"
+license-files = ["LICENSE"]
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["rapidly", "audio separation", "noise reduction", "speech denoise", "dereverb", "music stem separation"]
+dependencies = ['setuptools>=41.2.0', 'numpy', 'soundfile']
+requires-python = ">=3.0"
+
+[project.urls]
+Homepage = "https://www.rapidly.io"
+Documentation = "https://www.rapidly.io/docs"
+Source = "https://github.com/rapidly-labs/rapidly-sdk"
+Changelog = "https://github.com/rapidly-labs/rapidly-sdk/blob/main/CHANGELOG.md"

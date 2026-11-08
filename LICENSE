@@ -1,0 +1,195 @@
+RAPIDLY SDK LICENCE AGREEMENT
+Version 1.2.0, effective 2026-11-08
+
+Copyright (c) 2026 Rapidly Labs AS. All rights reserved.
+
+This Software ("the Rapidly SDK") is proprietary commercial software
+of Rapidly Labs AS, a company incorporated in Norway. Use of the SDK
+requires a valid Rapidly licence issued by Rapidly Labs AS. Without a
+valid licence, the SDK operates in a watermarked demo mode that audibly
+degrades its output.
+
+By downloading, installing, or using the SDK you agree to the terms below.
+
+This Agreement, together with any separate commercial agreement you
+have signed with Rapidly Labs AS, is the complete agreement governing
+your use of the SDK. The Rapidly Privacy Policy at
+https://www.rapidly.io/privacy describes how Rapidly Labs AS handles
+the data described in this Agreement.
+
+1. GRANT OF LICENCE
+   Subject to a valid Rapidly licence and the terms of any separate
+   commercial agreement with Rapidly Labs AS, you are granted a
+   non-exclusive, non-transferable, non-sublicensable licence to:
+     (a) embed the SDK binaries within your own end-user applications,
+         products, or services;
+     (b) load the audio model files distributed with the SDK or supplied
+         to you by Rapidly Labs AS, but only the model identifiers and
+         latency variants encoded in your Rapidly licence ("model
+         entitlements").
+
+2. LICENCE TYPES
+
+   Rapidly Labs AS issues three kinds of key. All are registered with
+   the SDK in the same way; the key determines how the SDK is
+   authorised. Whichever key is used, audio is processed on the device
+   and is never sent to Rapidly Labs AS.
+
+   2.1 Licence Keys (lk_)
+       A licence key is an offline credential that is either perpetual
+       or carries an expiry date set by Rapidly Labs AS. It is verified
+       on the device, and the models and latency variants it covers are
+       enforced when a model is loaded. No network access is required
+       or attempted.
+
+   2.2 Subscription Keys (sk_)
+       A subscription key is an online, usage-based credential. The SDK
+       contacts the Rapidly licensing service to authorise processing,
+       to report each end-user session, and to meter usage for billing,
+       as described in section 3. You must keep the subscription key on
+       your own backend; devices running the SDK obtain short-lived
+       tokens from your backend and never hold the key itself. If the
+       licensing service is unreachable, processing continues for a
+       limited grace period and then produces watermarked output until
+       contact is restored.
+
+   2.3 Activation Keys (ak_)
+       An activation key licenses each device or installation ("unit")
+       on which the SDK runs. The SDK contacts the Rapidly licensing
+       service when your application starts and at regular intervals
+       while it runs, and receives a licence for that unit. Between
+       checks the unit needs no network access: the licence stays valid
+       for the offline period agreed for the key with Rapidly Labs AS.
+       A unit whose licence has expired without a successful check
+       produces watermarked output until a check succeeds. Each unit
+       is counted for billing in the period in which it held a
+       licence. Rapidly Labs AS, or you through your Rapidly account,
+       may deactivate a unit; a deactivated unit produces watermarked
+       output from its next check. Where the SDK runs in an
+       application you ship to end users, you keep the activation key
+       on your own backend and forward the SDK's checks to the
+       licensing service unchanged; the key itself never leaves your
+       backend.
+
+3. DATA REPORTED BY THE SDK
+
+   With a licence key, the SDK reports nothing to Rapidly Labs AS.
+
+   With a subscription key, the SDK reports to the Rapidly licensing
+   service, at the start and end of each end-user session and
+   periodically while it runs: a session identifier, the session's
+   start and end times, the amount of processing time, whether the
+   output was authorised or watermarked, the end-user identifier your
+   application supplies, and the application or website origin the
+   session token was issued for.
+
+   With an activation key, the SDK reports at each check: an
+   identifier of the unit derived from the operating system and
+   hashed, so that the same unit is recognised across checks; the
+   operating system and the type of platform the unit is; the
+   identity of the application the SDK runs in; the SDK version; the
+   periods in which the unit ran without checking in; and technical
+   signals about the unit's state and use that Rapidly Labs AS uses
+   to authorise the SDK and to protect the licensing service against
+   misuse. Each check is time-stamped by the licensing service.
+   Labels or notes you attach to a key or a unit in your Rapidly
+   account are stored with it.
+
+   In every mode the SDK reports no audio, no audio-derived content,
+   and no information about what the audio contains. Rapidly Labs AS
+   uses the reported data only to authorise the SDK, to meter and bill
+   usage, to protect the licensing service from abuse, and to meet its
+   legal obligations, as described in the Rapidly Privacy Policy. Any
+   change to the data reported will be documented in the SDK
+   documentation and changelog before it takes effect.
+
+   You agree that:
+     (a) the end-user identifier you supply must be an opaque value
+         such as a random identifier or a hash. It must not be an email
+         address, a name, a phone number, a device serial number, or
+         anything else that identifies a person or a device on its own;
+     (b) you are responsible for informing your own users about the
+         SDK's reporting and for obtaining any consent that the law
+         applicable to your application requires;
+     (c) you will not alter, suppress, or falsify the data the SDK
+         reports.
+
+4. RESTRICTIONS
+   You may not:
+     (a) reverse engineer, decompile, disassemble, or otherwise attempt
+         to derive the source code, signing keys, or model weights from
+         the SDK or its model files, except to the extent that applicable
+         mandatory law prohibits this restriction;
+     (b) redistribute the SDK or any of its components as a standalone
+         product, library, or service;
+     (c) load model files, model identifiers, or latency variants not
+         covered by your Rapidly licence, or attempt to bypass, disable,
+         or circumvent licence verification, activation, renewal,
+         session reporting, or watermarking;
+     (d) remove, alter, or obscure any copyright, trademark, licence
+         notice, or other proprietary marking on the SDK, its model
+         files, or any accompanying documentation;
+     (e) use the SDK in any manner that violates applicable law or any
+         additional terms of your separate commercial agreement;
+     (f) share a subscription key with any third party, embed it in an
+         application or device distributed to end users, or hold it
+         anywhere other than on your own backend systems.
+
+5. UPDATES AND MODEL VERSIONS
+   Rapidly Labs AS may release updates to the SDK binaries and to the
+   model files. Patch revisions to a model file (same model_id, increased
+   model_version) are covered by your existing Rapidly licence. Minor
+   and major model revisions, which carry a new model_id, may require
+   an upgraded or new Rapidly licence.
+
+6. OWNERSHIP
+   The SDK, its model files, and all related intellectual property are
+   and remain the exclusive property of Rapidly Labs AS. Nothing in this
+   Agreement transfers ownership of any intellectual property to you.
+
+7. NO WARRANTY
+   THE SDK IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING WITHOUT LIMITATION ANY WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.
+   RAPIDLY LABS AS DOES NOT WARRANT THAT THE SDK OR THE RAPIDLY
+   LICENSING SERVICE WILL BE UNINTERRUPTED, AVAILABLE, OR ERROR-FREE.
+   WHERE THE LICENSING SERVICE CANNOT BE REACHED, THE SDK'S FALLBACK TO
+   WATERMARKED OUTPUT AFTER THE GRACE PERIOD IS INTENDED BEHAVIOUR AND
+   NOT A DEFECT. ANY AVAILABILITY COMMITMENT FOR THE LICENSING SERVICE
+   IS GIVEN ONLY IN A SEPARATE COMMERCIAL AGREEMENT.
+
+8. LIMITATION OF LIABILITY
+   IN NO EVENT SHALL RAPIDLY LABS AS BE LIABLE FOR ANY INDIRECT,
+   INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES, OR FOR ANY
+   LOSS OF PROFITS, REVENUE, DATA, OR USE, ARISING FROM OR RELATED TO
+   THIS AGREEMENT OR THE SDK, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+   DAMAGES. THE TOTAL AGGREGATE LIABILITY OF RAPIDLY LABS AS UNDER THIS
+   AGREEMENT SHALL NOT EXCEED THE FEES PAID BY YOU FOR THE RAPIDLY
+   LICENCE COVERING THE PERIOD IN WHICH THE CLAIM AROSE.
+
+9. TERMINATION AND SUSPENSION
+   This Agreement terminates automatically upon expiry of your Rapidly
+   licence, upon any material breach of this Agreement, or as specified
+   in your separate commercial agreement with Rapidly Labs AS. For a
+   subscription key, the licence also ends when the subscription is
+   cancelled or lapses for non-payment. For an activation key, each
+   unit's authorisation ends when it expires without renewal.
+
+   Rapidly Labs AS may suspend or revoke a subscription or activation
+   key on material breach of this Agreement, on non-payment, or where
+   the key is being used in a way that threatens the security or
+   integrity of the licensing service. While a key is suspended,
+   revoked, or expired, the SDK produces watermarked output.
+
+   Upon termination you must cease all use of the SDK and destroy all
+   copies in your possession, except that devices already in the hands
+   of your end users may continue to run the SDK in watermarked mode.
+
+10. GOVERNING LAW
+   This Agreement is governed by the laws of Norway, without regard to
+   conflict-of-law principles. Disputes shall be resolved in the courts
+   of Oslo, Norway.
+
+11. CONTACT
+    Commercial licensing enquiries: sales@rapidly.io
+    Technical support and key issuance: support@rapidly.io
